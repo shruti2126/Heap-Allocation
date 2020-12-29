@@ -16,17 +16,7 @@
 // Email:             sharma224@wisc.edu
 // CS Login:          shruti@cs.wisc.edu
 //
-/////////////////////////// OTHER SOURCES OF HELP //////////////////////////////
-//                   fully acknowledge and credit all sources of help,
-//                   other than Instructors and TAs.
-//
-// Persons:          Identify persons by name, relationship to you, and email.
-//                   Describe in detail the the ideas and help they provided.
-//
-// Online sources:   avoid web searches to solve your problems, but if you do
-//                   search, be sure to include Web URLs and description of 
-//                   of any information you find.
-//////////////////////////// 80 columns wide /////////////////////////////////// 
+
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -148,13 +138,12 @@ blockHeader* findFreeBlock(blockHeader* mostRecent, int requestedSize){
  * Argument size: requested size for the payload
  * Returns address of allocated block on success.
  * Returns NULL on failure.
- * This function should:
- * - Check size - Return NULL if not positive or if larger than heap space.
- * - Determine block size rounding up to a multiple of 8 and possibly adding padding as a result.
- * - Use NEXT-FIT PLACEMENT POLICY to chose a free block
- * - Use SPLITTING to divide the chosen free block into two if it is too large.
- * - Update header(s) and footer as needed.
- * Tips: Be careful with pointer arithmetic and scale factors.
+ * This function:
+ * - Checks size - Returns NULL if not positive or if larger than heap space.
+ * - Determines block size rounding up to a multiple of 8 and adding padding as a result.
+ * - Uses NEXT-FIT PLACEMENT POLICY to chose a free block
+ * - Uses SPLITTING to divide the chosen free block into two if it is too large.
+ * - Updates header(s) and footer as needed
  */
 void* allocHeap(int size) {     
     if(size <= 0 || size > allocsize){
@@ -199,12 +188,12 @@ void* allocHeap(int size) {
  * Argument ptr: address of the block to be freed up.
  * Returns 0 on success.
  * Returns -1 on failure.
- * This function should:
- * - Return -1 if ptr is NULL.
- * - Return -1 if ptr is not a multiple of 8.
- * - Return -1 if ptr is outside of the heap space.
- * - Return -1 if ptr block is already freed.
- * - USE IMMEDIATE COALESCING if one or both of the adjacent neighbors are free.
+ * This function :
+ * - Returns -1 if ptr is NULL.
+ * - Returns -1 if ptr is not a multiple of 8.
+ * - Returns -1 if ptr is outside of the heap space.
+ * - Returns -1 if ptr block is already freed.
+ * - USEs IMMEDIATE COALESCING if one or both of the adjacent neighbors are free.
  * - Update header(s) and footer as needed.
  */                    
 int freeHeap(void *ptr) {  
